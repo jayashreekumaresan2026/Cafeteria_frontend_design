@@ -1,0 +1,147 @@
+/*background image design*/
+.back {
+background-image:url(images_used_in_css/mixture.jpg);
+background-size:100%;
+background-repeat:no-repeat;
+background-position:fixed
+    }
+
+/*fixed the customer and vendor button to login*/
+#mybutton {
+  position: fixed;
+  bottom: 60%;
+  right: 70%;
+}
+
+/*designing a body*/
+.body.class
+ {
+margin:0;
+padding:0;
+font-family:sans-serif;
+background:url(mixture.jpg);
+background-size:100%;
+background-repeat:no-repeat;
+background-position:fixed
+}
+/*text align to the center*/
+.center
+{
+    text-align: center
+}
+/*auto width */
+.auto-width
+{
+    width: 100px
+}
+/*To fix input entry  */
+
+input[type=text], input[type=password]
+{
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+/*design the button */
+button {
+  background-color: blue;
+  color: white;
+  padding: 14px 20px;
+  margin: 8px 0;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  display:block-inline;
+  float-left:400px;
+  float-right:500px;
+
+  }
+ /* change the color of the button when it hover*/
+
+button:hover
+  {
+  opacity: 0.8;
+  }
+
+/*cancel button design login page*/
+.cancelbtn
+{
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+/*place the image in the login icon*/
+.imgcontainer
+{
+  text-align: center;
+  margin:24px 0 12px 0;
+  position: relative;
+}
+/*size of the image*/
+img.fruits
+{
+  width: 20%;
+  height: 20%;
+}
+
+.container
+{
+  padding: 16px;
+}
+.container
+{
+padding: 16px;
+}
+
+span.psw
+{
+  float: right;
+  padding-top: 16px;
+}
+/*
+display the login page
+*/
+
+.modal
+ {
+ margin-left:10%;
+ margin-top:5%;
+  display: none;
+  position: fixed;
+  z-index:2;
+  left: 0;
+  top: 0;
+  width: 80%;
+  height: 80%;
+  overflow: auto;
+  background-color:white;
+  padding-top: 40px;
+}
+/*login page design*/
+modal-content
+{
+  background-color: #fefefe;
+  margin: 5% auto 15% auto;
+  border: 1px solid #888;
+  width: 80%;
+}
+
+/*colour when the cursor is on focus*/
+
+.close:hover,
+.close:focus
+{
+  color: red;
+  cursor: pointer;
+}
+/*cancelbutton to the login page*/
+.cancelbtn
+{
+     width: 6%;
+  }
+}
