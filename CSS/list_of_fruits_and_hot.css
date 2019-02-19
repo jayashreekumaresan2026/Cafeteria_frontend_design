@@ -1,9 +1,12 @@
+
+/*style for the body*/
 body{
 background-image:url(fall.jpg);
 background-image:absolute;
 z-index=-1
-
-}div.b {
+}
+/*style for the cart*/
+div.b {
 margin-top:0;
 margin-left:80%;
 position: absolute;
@@ -13,7 +16,7 @@ height: 800px;
 border: 3px solid blue;
 }
 
-
+/*style for the image card */
 .card {
 
 
@@ -27,7 +30,7 @@ border: 3px solid blue;
 
 }
 
-
+/*style for the text in the image*/
 .card button {
   border: none;
   outline: 0;
@@ -40,13 +43,14 @@ border: 3px solid blue;
   font-size: 15px;
 
 }
-
+/*button for add to cart*/
 .card button:hover {
   opacity: 0.7;
 }
 no-corners{
   border-radius: 0;
 }
+/*style for the position for the cart*/
 
 .cart{
   transform: scale(0);
@@ -130,7 +134,7 @@ no-corners{
 
 
 }
-
+/*navigation bar to the image*/
 .navbar{
   .navbar-brand{
     img{
