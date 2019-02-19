@@ -1,0 +1,26 @@
+.container {
+margin-left:5%;
+ position: fixed;
+ width: 100%;
+ max-width:100%;
+}
+
+.container img {
+ width: 42%;
+ height: 45%;
+ margin-left:20px;
+}
+.container .input {
+ position: relative;
+ top: 50%;
+ left: 50%;
+ transform: translate(-50%, -50%);
+ padding:0;
+ border: none;
+ cursor: pointer;
+ border-radius: 5px;
+}
+
+.container .input:hover {
+ background-color:black;
+}
