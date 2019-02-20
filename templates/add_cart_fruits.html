@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+<script src="../static/script/javascript_shooping.js"></script>
+    <style>
+        table, th, td {
+  border: 1px solid white;
+        }
+
+    </style>
+
+</head>
+<body>
+<table>
+    <tr>
+        <td valign="top">
+
+            <table>
+
+                <tbody>
+                <tr>
+                    <td>
+                        <img src="../static/images/apples.jpg" alt="apples" width=40%" height="200px"><br>
+                        <input type="button" value="Add to cart" onclick="AddtoCart('apples',1)"/>
+                    </td>
+                    <td>
+                        <img src="../static/images/orange.jpg" alt="guva" width="50%" height="200px"><br>
+                        <input type="button" value="Add to cart" onclick="AddtoCart('guva',1)"/>
+                    </td>
+                    <td>
+                        <img src="../static/images/green_grapes.jpg" alt="grapes" width="50%" height="200px"><br>
+                        <input type="button" value="Add to cart" onclick="AddtoCart('grapes',1)"/>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="../static/images/mosami.jpg" alt="mosambi" width=50%" height="200px"><br>
+                        <input type="button" value="Add to cart" onclick="AddtoCart('mosambi',1)"/>
+                    </td>
+                    <td>
+                        <img src="../static/images/muskmelon.jpg" alt="Muskmelon" width="50%" height="200px"><br>
+                        <input type="button" value="Add to cart" onclick="AddtoCart('Muskmelon',1)"/>
+                    </td>
+                    <td>
+                        <img src="../static/images/papaya.jpg" alt="papaya" width="50%" height="200px"><br>
+                        <input type="button" value="Add to cart" onclick="AddtoCart('papaya',1)"/>
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        <img src="../static/images/berry.jpg" alt="berry" width=50%" height="200px"><br>
+                        <input type="button" value="Add to cart" onclick="AddtoCart('Berry',1)"/>
+                    </td>
+                    <td>
+                        <img src="../static/images/carrots.jpg" alt="carrot" width="50%" height="200px"><br>
+                        <input type="button" value="Add to cart" onclick="AddtoCart('carrot',1)"/>
+                    </td>
+                    <td>
+                        <img src="../static/images/guva.jpg" alt="guva" width="50%" height="200px"><br>
+                        <input type="button" value="Add to cart" onclick="AddtoCart('guva',1)"/>
+                    </td>
+                </tr>
+
+
+                   <tr>
+                    <td>
+                        <img src="../static/images/pineapple.jpg" alt="pineapple" width=50%" height="200px"><br>
+                        <input type="button" value="Add to cart" onclick="AddtoCart('pineapple',1)"/>
+                    </td>
+                    <td>
+                        <img src="../static/images/pomegra.jpg" alt="pomegranate" width="50%" height="200px"><br>
+                        <input type="button" value="Add to cart" onclick="AddtoCart('pomegranate',1)"/>
+                    </td>
+                    <td>
+                        <img src="../static/images/black_grapes.jpg" alt="black_grapes" width="50%" height="200px"><br>
+                        <input type="button" value="Add to cart" onclick="AddtoCart('black_grapes',1)"/>
+                    </td>
+                </tr>
+                 <tr>
+                    <td>
+                        <img src="../static/images/water.jpg" alt="watermelon" width=50%" height="200px"><br>
+                        <input type="button" value="Add to cart" onclick="AddtoCart('watermelon',1)"/>
+                    </td>
+                     <td>
+                        <img src="../static/images/mango.jpg" alt="mango" width=50%" height="200px"><br>
+                        <input type="button" value="Add to cart" onclick="AddtoCart('mango',1)"/>
+                    </td>
+                </tr>
+
+                </tbody>
+            </table>
+        </td>
+        <td valign="top">
+            <table id="shopping cart">
+                <thead>
+                <tr>
+                    <td>
+                        Itemname
+                    </td>
+                    <td>
+                        Quantity
+                    </td>
+                </tr>
+                </thead>
+                <tbody id="ordered_items_list">
+                </tbody>
+            </table>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
