@@ -10,16 +10,21 @@ connection = psycopg2.connect("dbname=thoughtworks_cafeteria user=admin")
 
 @app.route('/')
 def login_page():
+    return render_template('creating_login_page.html')
+@app.route('/')
+def customer_page():
     return render_template('creating_customer_login.html')
 
+@app.route('/menu_page')
+def menu_page():
+    return render_template('menu_page.html')
 
 @app.route('/employee-login')
 def employee_page():
     return render_template('creating_customer_login.html')
 
 
-
-@app.route('/post-data', methods=['POST'])
+@app.route('/post-data', methods=['GET'])
 def get_data():
     print(request)
     post_data(connection, request.form)
