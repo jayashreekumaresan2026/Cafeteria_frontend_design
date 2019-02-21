@@ -2,25 +2,25 @@
 <head>
 	<title>Login</title>
 	<!--connecting with external the css page-->
-  <link rel="stylesheet" href="../CSS/creating_customer_login.css">
+  <link rel="stylesheet" href="../static/styles/creating_customer_login.css">
 
 </head>
 <body>
 <!--customer login-->
 	<div class="box">
-		<img src="Image_folder/serving.jpg" class="logo" >
+		<img src="../static/images/serving.jpg" class="logo" >
 		<h1>Login Here</h1>
 		<!--after entering the details the current page login to the next page-->
-		<form action="second_page_menu.html" >
+		<form action="menu_page.html"  method="post">
 			<p>User_Id</p>
 			<!--enter the user name and the id -->
 			<input type="text" name="" value="" placeholder="Enter the User_id">
 			<input type="submit" name="" value="Login"  onclick="">
           </form>
 
+
 			  <!--redirect  to  the home page-->
 			  <button type="button" onclick="location.href='creating_login_page.html'" class="cancelbtn">Cancel</button>
-		  </div>
 	</div>
 </body>
 </html>
