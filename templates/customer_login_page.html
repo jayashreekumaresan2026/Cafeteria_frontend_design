@@ -5,17 +5,17 @@
   <link rel="stylesheet" href="../static/styles/creating_customer_login.css">
 
 </head>
-<body>
 <!--customer login-->
+<body>
 	<div class="box">
 		<img src="../static/images/serving.jpg" class="logo" >
 		<h1>Login Here</h1>
 		<!--after entering the details the current page login to the next page-->
-		<form action="menu_page.html"  method="post">
+		<form action="/employee"  method="post">
 			<p>User_Id</p>
 			<!--enter the user name and the id -->
-			<input type="text" name="" value="" placeholder="Enter the User_id">
-			<input type="submit" name="" value="Login"  onclick="">
+			<input type="number" name="user_id" value="" placeholder="Enter the User_id" style="height:25px" required >
+			<input type="submit"  value="Login"  onclick="">
           </form>
 
 

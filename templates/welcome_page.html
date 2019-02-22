@@ -2,11 +2,11 @@
 <html>
 <head>
     <!--calling the css style function-->
-    <link rel="stylesheet" href="../CSS/My_login_page.css">
+    <link rel="stylesheet" href="../static/styles/My_login_page.css">
     <!--depend on the usage of the device the view will change-->
     <meta name="viewport" content="width=device-width, initial-scale=1">
-</head>;;
-<body class="back">
+</head>
+<body background="../images/mixture_fruit.jpg" class="back">
 
 <font size="8">
     <em>
@@ -16,34 +16,36 @@
 </font>
 
  <!--button for the vendor-->
-<div class = "center">
-    <button class = "auto-width" onclick="document.getElementById('vendor').style.display='block'">VENDOR</button>
-    <!--calling the customer login to the home page-->
-<a href="creating_customer_login.html">
-    <button class = "auto-width" onclick="document.getElementById('customer').style.display='block'">CUSTOMER</button></a>
-</div>
+      <button class = "auto-width" onclick="document.getElementById('vendor').style.display='block'">VENDOR</button>
+    <form action="/customer_page" method="get">
+        <!--calling the customer login to the home page-->
+
+    <button class = "auto-width" >CUSTOMER</button>
+    </form>
 <!--login page fo the vendor-->
 <div id="vendor" class="modal">
-    <form class="modal-content animate">
+    <form action="/menu_page" class="modal-content animate"  method="get">
         <div class="imgcontainer">
             <!--place the image in the vendor icon-->
-
-            <img src="Image_folder/mixture_fruit.jpg" alt="fruits" class="fruits">
+            <img src="../static/images/mixture_fruit.jpg" alt="fruits" class="fruits">
         </div>
          <!-- enter the vendor details-->
         <div class="container">
-            <label for="uname"><b>Username</b></label>
-            <input type="text" placeholder="Enter Username" name="uname" required>
+            <label for="user_id"><b>User Id</b></label>
+            <input type="text" id="user_id" placeholder="Enter User_id" name="user_id" required>
+
+            <label for="uname"><b>User ZXName</b></label>
+            <input type="text" id="uname" placeholder="Enter Username" name="uname" required>
 
             <label for="psw"><b>Password</b></label>
-            <input type="password" placeholder="Enter Password" name="psw" required>
+            <input type="password" id="psw" placeholder="Enter Password" name="psw" required>
 
             <button type="submit">Login</button>
             <label>
                 <input type="checkbox" checked="checked" name="remember"> Remember me
             </label>
         </div>
-        <!--cancle button-->
+        <!--cancel button-->
         <div class="container" style="background-color:#f1f1f1">
             <button type="button" onclick="document.getElementById('vendor').style.display='none'" class="cancelbtn">Cancel</button>
             <span class="psw">Forgot <a href="#">password?</a></span>
