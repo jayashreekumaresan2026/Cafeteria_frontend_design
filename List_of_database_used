@@ -1,2 +1,14 @@
-DATABASE NAME       :thoughtworks_cafeteria
-List_of_Tables_used :employee_details
+DATABASE NAME           :thoughtworks_cafeteria
+customer_table_name     :employee_details
+                        :create table employee_details (employee_name varchar(30) ,employee_id  integer PRIMARY KEY);
+                        :insert into employee_details values("jayashree",1001);
+login_details_table     :create table customer_details (employee_id  integer);
+                        :
+
+vendor_table_name       :create table vendor_details (vendor_id varchar(10) PRIMARY KEY,vendor_name varchar(30),vendor_password varchar(30));
+                        :insert into vendor_details values('cb1','oviya',12345);
+
+
+
+
+
