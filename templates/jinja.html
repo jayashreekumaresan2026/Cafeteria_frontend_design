@@ -3,20 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <script>
+        function get_item() {
+           var checksArray=document.getElementsByClassName('check');
+           for (var i=0;i<checksArray.length;i++){
+
+           if(checksArray[i].checked==false) {
+                return false;
+           }
+           else {
+                return true;
+           }
+        }
+    </script>
 </head>
 <body>
 
-<p>cold_beverage</p>
+<h1 style="text-align:center">cold Beverage</h1>
+
+<form action="\submission" method="POST" onsubmit="return get_item">
+    <ul>
+        {% for item in items %}
+        <li style="list-style-type:none;"><input type="checkbox" name="item" class="check" onclick="get_item()">{{ item
+            }}
+        </li>
+        {% endfor %}
+    </ul>
+    <input type="submit" value="Submit">
 
 
-  <ul>
-      {% for item in items %}
-      <li><input type="checkbox" name="item" value="checked">{{ item }}</li>
-      {% endfor %}
-  </ul>
-
-
-
-
+</form>
 </body>
 </html>
