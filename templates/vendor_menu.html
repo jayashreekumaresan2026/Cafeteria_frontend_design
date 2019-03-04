@@ -1,34 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Get Check Box Value</title>
-    <style>
-        .container {
-            margin: 100px 50px;
-            font-size: 20px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
-<body>
-<div class="container">
-    <input type="checkbox" class="checks" value="Apple"> Apple<br>
-    <input type="checkbox" class="checks" value="Banana"> Banana<br>
-    <input type="checkbox" class="checks" value="Carrot"> Carrot<br>
-    <br><br>
-    <a href="#" onclick="getValue();return false;">Get Value</a>
-</div>
-<script>
-function getValue() {
-    var checks = document.getElementsByClassName('checks');
-    var str = '';
-    for ( i = 0; i < 3; i++) {
-        if ( checks[i].checked === true ) {
-            str += checks[i].value + " ";
-        }
-    }
-    alert(str);
-}
-</script>
+
+<h1 style="text-align:center">cold Beverage</h1>
+
+<form action="/submission" method="POST">
+    <ul>
+        {% for item in items %}
+        <li style="list-style-type:none;"><input type="checkbox" name="{{item}}">{{ item }}
+        </li>
+        {% endfor %}
+    </ul>
+    <input type="submit" value="Submit">
+</form>
+
+
+
 </body>
 </html>
