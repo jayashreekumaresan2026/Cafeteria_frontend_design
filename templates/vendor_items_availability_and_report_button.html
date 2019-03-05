@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+ <link rel="stylesheet" href="../static/styles/My_login_page.css">
+
+ <title> vendor_page</title>
+</head>
+<body background="../static/assets/images/main.jpg">
+<div class="text">
+<font size="8">
+    <em>
+        <h4 class = "center">CHECK AVAILABILITY </h4>
+             <h6 class = "center">AND</h6>
+        <h4 class= "center">GENERATE REPORT</h4>
+    </em>
+</font>
+ </div>
+<form action="/available_item_and_report_button" >
+ <input type="hidden" name="vendorname" value="{{vendorname}}">
+ <button type="submit " class = "auto-width" ><b>AVAILABLE ITEM</b></button>
+ </form>
+<form action="/report_generation">
+ <input type="hidden" name="vendorname" value="{{vendorname}}">
+
+    <button type="submit" class = "auto-width" ><b>REPORT GENERATION</b></button>
+</form>
+
+</form>
+    <form action="/backbtn">
+        <div style="margin-right:100%;margin-top:8%">
+  <button class="auto-width"  >Go Back</button>
+        </div>
+</form>
+</body>
+ </html>

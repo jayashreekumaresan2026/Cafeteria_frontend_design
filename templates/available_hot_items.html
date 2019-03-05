@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 style="text-align:center">cold Beverage</h1>
+
+<form action="/menu_page_for_hot_items" >
+    <ul>
+        {% for item in items %}
+              {{ item }}
+            <button onclick="myfunction1({{item}})" name="{{item}}">Add to cart </button>
+
+            <button onclick="myfunction2">-</button>
+            <input type="number" id="myNumber">
+            <button onclick="myFunction3()">+</button>
+            <p id ="demo"></p>
+
+            <script>
+            function myFunction1({{name}}){
+            document.getElementById("demo").innerHTML={{name}};
+            }
+
+            function myFunction2(){
+            document.getElementById("myNUMBER").stepDown();
+            }
+            function myFunction3(){
+            document.getElementById("myNUMBER").stepUp();
+            }
+
+
+              </script>
+
+
+
+        </li>
+        {% endfor %}
+    </ul>
+
+
+
+</form>
+</body>
+</html>

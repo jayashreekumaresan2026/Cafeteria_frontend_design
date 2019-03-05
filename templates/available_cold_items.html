@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 style="text-align:center">COLD BEVERAGE</h1>
+
+<form action="/menu_page_for_cold_items" >
+    <ul>
+        {% for item in items %}
+        <li >{{ item }}
+            <input type="button" onclick="myFunction(this)" id="myBtn" value="{{item}}">
+
+<p id="demo"></p>
+
+        </li>
+        {% endfor %}
+    </ul>
+
+
+
+</form>
+<script>
+function myFunction(myBtn) {
+
+  document.getElementById("myBtn").innerHTML = {{item}};
+
+  var z = document.createElement("INPUT");
+  z.setAttribute("type","number");
+  z.setAttribute("value","0");
+
+  document.body.append(z);
+  document.getElementById(myBtn.id).disabled = true;
+}
+</script>
+
+</body>
+</html>

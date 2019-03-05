@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
     <head>
+         <!--creating a shopping cart for the user-->
         <title>shopping</title>
         <link rel="stylesheet" href="../static/styles/list_of_fruits_and_hot.css">
     <script src="../static/script/javascript_shopping.js"></script>
     </head>
     <body>
+    <!--navigation button to the hot_bevarage-->
     <a href="menu_page.html" class="previous">&laquo; Previous</a>
+    <form action="add_cart_for_hot.html">
+  <input type="image" src="../static/images/coffs.jpg" alt="Submit" width="70" height="100" style="width:70px">
+    <h3>HOT</h3>
+ </form>
+    <!--classes for add the items in the menu-->
         <section class="container content-section">
             <h2 class="section-header" >FRUITS</h2>
             <div class="shop-items">
@@ -95,7 +102,7 @@
 
         </section>
 
-        <section class="container content-section">
+        <div class="order">
             <h2 class="section-header">CART</h2>
             <div class="cart-row">
                 <span class="cart-item cart-header cart-column">ITEM</span>
@@ -108,6 +115,6 @@
                 <strong class="cart-total-title">Total</strong>
             </div>
             <button class="btn btn-primary btn-purchase" type="button">submit</button>
-        </section>
+        </div>
     </body>
 </html>

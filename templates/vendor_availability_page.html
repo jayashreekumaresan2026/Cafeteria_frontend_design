@@ -7,17 +7,23 @@
 
 <h1 style="text-align:center">cold Beverage</h1>
 
+
 <form action="/submission" method="POST">
+    <input type="hidden" name="vendorname" value={{name}}>
     <ul>
         {% for item in items %}
         <li style="list-style-type:none;"><input type="checkbox" name="{{item}}">{{ item }}
         </li>
         {% endfor %}
     </ul>
-    <input type="submit" value="Submit">
+    <input type="submit" value="Submit" onclick="welcome_page.html">
 </form>
-
-
+</form>
+    <form action="/back_from_available_page">
+        <div style="margin-right:100%;margin-top:30%">
+  <button class="auto-width"  >Go Back</button>
+        </div>
+</form>
 
 </body>
 </html>
