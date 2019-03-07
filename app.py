@@ -47,7 +47,6 @@ def customer_page_login():
     return render_template('customer_login_page.html')
 
 
-
 def validate_customer_data(connection, user_data):
     cursor = connection.cursor()
     cursor.execute("select employee_id from employee_details where employee_id = %(emp_id)s ",
@@ -141,6 +140,7 @@ def update_database_hot_items(connection, update_data):
             j += 2
             index += 1
     return update_details
+
 
 @app.route('/juice_world_for_vendor')
 def juice_login_for_vendor():
@@ -260,23 +260,37 @@ def database_selected_avail_cold_items():
     return record
 
 
-@app.route('/report_generation_button',methods=['POST'])
+@app.route('/report_generation_button', methods=['POST'])
 def calculation_for_report():
-    sum = calculation(connection, request.form)
-    sum_cost=tuple(sum)
-    return render_template("display_report.html", items=sum_cost)
+    report_table= calculation(connection, request.form)
+    totalcost = total_cost(connection, request.form)
+    sum_cost = tuple(report_table)
+
+    return render_template("display_report.html", item=totalcost, items=sum_cost)
 
 
-def calculation(connection,user_data):
+def calculation(connection, user_data):
     cursor = connection.cursor()
     array_values = tuple(user_data.values())
-    array_value=array_values[0]
+    array_value = array_values[0]
 
-    sql_update="select sum(cost*quantity)from item inner join order_detail on item.item_id = order_detail.item_id where id = %(vendor_id)s"
+    sql_update = "select employee_id,id,item_name,(quantity*cost),date from item inner join order_detail on item.item_id = order_detail.item_id where id = %(vendor_id)s"
     cursor.execute(sql_update, {'vendor_id': array_value})
-    cost = cursor.fetchall()
+    report_table = cursor.fetchall()
     cursor.close()
-    return cost
+    return report_table
+
+
+def total_cost(connection, user_data):
+    cursor = connection.cursor()
+    array_values = tuple(user_data.values())
+    array_value = array_values[0]
+
+    sql_query = "select sum(quantity*cost) from item inner join order_detail on item.item_id = order_detail.item_id where id = %(vendor_id)s"
+    cursor.execute(sql_query, {'vendor_id': array_value})
+    totalcost = cursor.fetchall()
+    cursor.close()
+    return totalcost
 
 
 if __name__ == '__main__':
