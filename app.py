@@ -86,60 +86,48 @@ def update_item_for_cold():
     return render_template('welcome_page.html', item=rows)
 
 
-def update_database_cold_items(connection, update_data):
-    item = update_data.to_dict()
-    a = []
-    b = []
-    c = []
-    i = 1
-    j = 2
-    index = 0
-    if i != len(item):
-        for row in range(len(item)):
-            a.append(list(item.keys())[i])
-            b.append(list(item.values())[j])
-            c.append(list(item.values())[0])
+def update_database_cold_items(connection, user_data):
+    item_values = list(user_data.values())
+    employee_id = item_values[0]
+    item_values.remove(item_values[0])
+    item_key = list(user_data.keys())
+    item_key.remove(item_key[0])
+    for id in list(item_key):
+        quantity = user_data[id]
+        if int(quantity) != 0:
             cursor = connection.cursor()
-            update_details = "insert into order_detail(item_id,quantity,employee_id) select item_id,{},{} from item where item_name='{}'".format(
-                b[index], c[0], a[index])
+            update_details = "insert into order_detail(item_id,employee_id,quantity) select item_id,{},{} from item where item_id= {}".format(
+                employee_id, quantity, id)
             cursor.execute(update_details)
             connection.commit()
             cursor.close()
-            i += 2
-            j += 2
-            index += 1
-    return update_details
+        else:
+            continue
 
 
 @app.route('/menu_page_for_hot_items', methods=['POST'])
 def update_item_for_hot():
-    rows = update_database_hot_items(connection, request.form)
+    rows = update_database_cold_items(connection, request.form)
     return render_template('welcome_page.html', item=rows)
 
 
-def update_database_hot_items(connection, update_data):
-    item = update_data.to_dict()
-    a = []
-    b = []
-    c = []
-    i = 1
-    j = 2
-    index = 0
-    if i != len(item):
-        for row in range(len(item)):
-            a.append(list(item.keys())[i])
-            b.append(list(item.values())[j])
-            c.append(list(item.values())[0])
+def update_database_hot_items(connection, user_data):
+    item_values = list(user_data.values())
+    employee_id = item_values[0]
+    item_values.remove(item_values[0])
+    item_key = list(user_data.keys())
+    item_key.remove(item_key[0])
+    for id in list(item_key):
+        quantity = user_data[id]
+        if int(quantity) != 0:
             cursor = connection.cursor()
-            update_details = "insert into order_detail(item_id,quantity,employee_id) select item_id,{},{} from item where item_name='{}'".format(
-                b[index], c[0], a[index])
+            update_details = "insert into order_detail(item_id,employee_id,quantity) select item_id,{},{} from item where item_id= {}".format(
+                employee_id, quantity, id)
             cursor.execute(update_details)
             connection.commit()
             cursor.close()
-            i += 2
-            j += 2
-            index += 1
-    return update_details
+        else:
+            continue
 
 
 @app.route('/juice_world_for_vendor')
@@ -224,13 +212,13 @@ def cold_item(connection, user_data):
     rows = database_selected_hot_items()
     items = []
     for row in rows:
-        items.append(row[0])
+        items.append({"id": row[0], "name": row[1]})
     return render_template("available_cold_items.html", items=items, empid=array_value)
 
 
 def database_selected_hot_items():
     cursor = connection.cursor()
-    cursor.execute("select  item_name from item where is_available  ='yes' AND id=111 ")
+    cursor.execute("select  item_id,item_name from item where is_available  ='yes' AND id=111 ")
     record = cursor.fetchall()
 
     return record
@@ -246,23 +234,28 @@ def hot_items(connection, user_data):
     array_values = tuple(user_data.values())
     array_value = array_values[0]
     rows = database_selected_avail_cold_items()
-    items = []
+    item = []
     for row in rows:
-        items.append(row[0])
-    return render_template("available_hot_items.html", items=items, empid=array_value)
+        item.append({"id": row[0], "name": row[1]})
+    return render_template("available_hot_items.html", items=item, empid=array_value)
 
 
 def database_selected_avail_cold_items():
     cursor = connection.cursor()
-    cursor.execute("select  item_name from item where is_available  ='yes' AND id=222")
+    cursor.execute("select  item_id,item_name from item where is_available  ='yes' AND id=222")
     record = cursor.fetchall()
 
     return record
 
 
+@app.route('/display_report_page')
+def generation_report():
+    return render_template("welcome_page.html")
+
+
 @app.route('/report_generation_button', methods=['POST'])
 def calculation_for_report():
-    report_table= calculation(connection, request.form)
+    report_table = calculation(connection, request.form)
     totalcost = total_cost(connection, request.form)
     sum_cost = tuple(report_table)
 
@@ -273,8 +266,7 @@ def calculation(connection, user_data):
     cursor = connection.cursor()
     array_values = tuple(user_data.values())
     array_value = array_values[0]
-
-    sql_update = "select employee_id,id,item_name,(quantity*cost),date from item inner join order_detail on item.item_id = order_detail.item_id where id = %(vendor_id)s"
+    sql_update ="select order_detail.employee_id,item.item_id,order_detail.date,sum(order_detail.quantity*item.cost) FROM order_detail inner join item on order_detail.item_id=item.item_id GROUP BY order_detail.employee_id,item.item_id,order_detail.date ORDER BY employee_id= %(vendor_id)s"
     cursor.execute(sql_update, {'vendor_id': array_value})
     report_table = cursor.fetchall()
     cursor.close()
@@ -291,6 +283,8 @@ def total_cost(connection, user_data):
     totalcost = cursor.fetchall()
     cursor.close()
     return totalcost
+
+
 
 
 if __name__ == '__main__':
