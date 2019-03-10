@@ -96,7 +96,7 @@ def update_database_cold_items(connection, user_data):
         quantity = user_data[id]
         if int(quantity) != 0:
             cursor = connection.cursor()
-            update_details = "insert into order_detail(item_id,employee_id,quantity) select item_id,{},{} from item where item_id= {}".format(
+            update_details = "insert into order_details(item_id,employee_id,quantity) select id,{},{} from items where id= {}".format(
                 employee_id, quantity, id)
             cursor.execute(update_details)
             connection.commit()
@@ -107,7 +107,7 @@ def update_database_cold_items(connection, user_data):
 
 @app.route('/menu_page_for_hot_items', methods=['POST'])
 def update_item_for_hot():
-    rows = update_database_cold_items(connection, request.form)
+    rows = update_database_hot_items(connection, request.form)
     return render_template('welcome_page.html', item=rows)
 
 
@@ -121,7 +121,7 @@ def update_database_hot_items(connection, user_data):
         quantity = user_data[id]
         if int(quantity) != 0:
             cursor = connection.cursor()
-            update_details = "insert into order_detail(item_id,employee_id,quantity) select item_id,{},{} from item where item_id= {}".format(
+            update_details = "insert into order_details(item_id,employee_id,quantity) select id,{},{} from items where id= {}".format(
                 employee_id, quantity, id)
             cursor.execute(update_details)
             connection.commit()
@@ -174,7 +174,7 @@ def cold_item_check_availability():
 
 def selected_cold_items_in_the_database(connection, user_data):
     cursor = connection.cursor()
-    query = "select  item_name from item where id =%s;"
+    query = "select  name from items where vendor_id =%s;"
     cursor.execute(query, (int(user_data.decode().split('=')[1]),))
     record = cursor.fetchall()
 
@@ -192,8 +192,8 @@ def set_list_of_item_in_database(connection, user_data):
     array = tuple(user_data.keys())
     array_values = tuple(user_data.values())
     array_value = array_values[0]
-    sql_update = "update item set is_available = 'no' where id=%(vendor_id)s"
-    sql_data = "update item set is_available = 'yes' WHERE item_name  IN %s"
+    sql_update = "update items set is_available = 'no' where vendor_id=%(vendor_id)s"
+    sql_data = "update items set is_available = 'yes' WHERE name  IN %s"
     cursor.execute(sql_update, {'vendor_id': array_value})
     cursor.execute(sql_data, (array,))
     connection.commit()
@@ -218,7 +218,7 @@ def cold_item(connection, user_data):
 
 def database_selected_hot_items():
     cursor = connection.cursor()
-    cursor.execute("select  item_id,item_name from item where is_available  ='yes' AND id=111 ")
+    cursor.execute("select  id,name from items where is_available  ='yes' AND vendor_id=111 ")
     record = cursor.fetchall()
 
     return record
@@ -242,7 +242,7 @@ def hot_items(connection, user_data):
 
 def database_selected_avail_cold_items():
     cursor = connection.cursor()
-    cursor.execute("select  item_id,item_name from item where is_available  ='yes' AND id=222")
+    cursor.execute("select  id,name from items where is_available  ='yes' AND vendor_id=222")
     record = cursor.fetchall()
 
     return record
@@ -257,16 +257,16 @@ def generation_report():
 def calculation_for_report():
     report_table = calculation(connection, request.form)
     totalcost = total_cost(connection, request.form)
-    sum_cost = tuple(report_table)
+    display_table = tuple(report_table)
 
-    return render_template("display_report.html", item=totalcost, items=sum_cost)
+    return render_template("display_report.html", item=totalcost, items=display_table)
 
 
 def calculation(connection, user_data):
     cursor = connection.cursor()
     array_values = tuple(user_data.values())
     array_value = array_values[0]
-    sql_update ="select order_detail.employee_id,item.item_id,order_detail.date,sum(order_detail.quantity*item.cost) FROM order_detail inner join item on order_detail.item_id=item.item_id GROUP BY order_detail.employee_id,item.item_id,order_detail.date ORDER BY employee_id= %(vendor_id)s"
+    sql_update = "select order_details.employee_id,items.id,order_details.date,sum(order_details.quantity*items.cost) FROM order_details inner join items on order_details.item_id=items.id  where items.vendor_id = %(vendor_id)s GROUP BY order_details.employee_id,items.id,order_details.date ORDER BY order_details.employee_id"
     cursor.execute(sql_update, {'vendor_id': array_value})
     report_table = cursor.fetchall()
     cursor.close()
@@ -278,13 +278,11 @@ def total_cost(connection, user_data):
     array_values = tuple(user_data.values())
     array_value = array_values[0]
 
-    sql_query = "select sum(quantity*cost) from item inner join order_detail on item.item_id = order_detail.item_id where id = %(vendor_id)s"
+    sql_query = "select sum(quantity*cost) from items inner join order_details on items.id = order_details.item_id where vendor_id = %(vendor_id)s"
     cursor.execute(sql_query, {'vendor_id': array_value})
     totalcost = cursor.fetchall()
     cursor.close()
     return totalcost
-
-
 
 
 if __name__ == '__main__':
