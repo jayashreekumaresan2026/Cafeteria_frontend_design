@@ -1,52 +1,29 @@
-/*background image design*/
-.back {
-background-image:url(images_used_in_css/mixture.jpg);
+
+body
+ {
+background-image:url("../static/assets/images/mixture1.jpg");
 background-size:100%;
 background-repeat:no-repeat;
 background-position:fixed
     }
 
-/*fixed the customer and vendor button to login*/
-#mybutton {
-  position: fixed;
-  bottom: 60%;
-  right: 70%;
-}
-
-/*designing a body*/
-.body.class
- {
-margin:0;
-padding:0;
-font-family:sans-serif;
-background:url(mixture.jpg);
-background-size:100%;
-background-repeat:no-repeat;
-background-position:fixed
-}
-/*text align to the center*/
 .center
 {
-    text-align: center
+    text-align: center;
+    color:orange;
+
 }
-/*auto width */
+
 .auto-width
 {
-    width: 100px
-}
-/*To fix input entry  */
+    width: 100px;
+    margin-left:45%;
+    margin-right:40%;
 
-input[type=text], input[type=password]
-{
-  width: 100%;
-  padding: 12px 20px;
-  margin: 8px 0;
-  display: inline-block;
-  border: 1px solid #ccc;
-  box-sizing: border-box;
 }
 
-/*design the button */
+
+
 button {
   background-color: blue;
   color: white;
@@ -60,88 +37,131 @@ button {
   float-right:500px;
 
   }
- /* change the color of the button when it hover*/
 
-button:hover
-  {
-  opacity: 0.8;
-  }
 
-/*cancel button design login page*/
-.cancelbtn
+  /*This specify the style of the body tag*/
+
+ .images{
+	margin: 0;
+	padding: 0;
+	background-image:url("static/assets/images/tree.jpg");/*this rgb colors is used for the intensity of the image*/
+	background-size: cover;
+	font-family: sans-serif;
+  background-attachment:fixed;
+}
+/*this is used to fix the user login box like structure*/
+.box{
+	width: 328px;
+	height: 420px;
+	background: rgba(0, 0, 0, 0.34);
+	color: white;
+	top: 50%;
+	left: 50%;
+	position: absolute;
+	transform: translate(-50%,-50%);
+	box-sizing: border-box;
+	border-radius: 20px;
+	padding:80px 30px;
+
+
+}
+/*the logo is fixed inside the user login box*/
+.logo{
+	width: 100px;
+	height: 100px;
+	border-radius: 50%;
+	position: absolute;
+	top: -50px;
+	left: 35%;
+}
+/*size and position of the header text*/
+h1{
+	margin: 0;
+	padding:0 0 20px;
+	text-align: center;
+	font-size: 22px;
+}
+/*style for the user login box*/
+.box p{
+	margin: 0;
+	padding:0;
+	font-weight: bold;
+}
+/*fix the input text area*/
+.box input{
+	width: 100%;
+	margin-bottom: 20px;
+
+}
+/*style of the box and the text field for the user*/
+.box input[type="text"],input[type="password"]{
+	border:none;
+	border-bottom: 1px solid white;
+	background: transparent;
+	outline: none;
+	height: 40px;
+	color: white;
+	font-size: 16px;
+}
+/*style fod the submit button*/
+.box input[type="submit"]
 {
-  width: auto;
-  padding: 10px 18px;
-  background-color: #f44336;
+	border:none;
+	outline: none;
+	height: 40px;
+	background:#fb2525;
+	color: white;
+	font-size: 18px;
+	border-radius: 20px;
+}
+/*login button color change when the cursor is hover*/
+.box input[type=submit]:hover{
+	cursor: pointer;
+	background:green;
+	color: white;
+
+}
+button1{
+background:green;
 }
 
-/*place the image in the login icon*/
-.imgcontainer
-{
-  text-align: center;
-  margin:24px 0 12px 0;
-  position: relative;
-}
-/*size of the image*/
-img.fruits
-{
-  width: 20%;
-  height: 20%;
+
+.cancelbtn{
+margin-top:40%;
+margin-left:40%;
+
 }
 
-.container
+
+
+
+
+.cold_beverage
 {
-  padding: 16px;
-}
-.container
-{
-padding: 16px;
+
+margin-left:5%;
+margin-bottom:5%;
 }
 
-span.psw
+.hot_beverage
 {
-  float: right;
-  padding-top: 16px;
-}
-/*
-display the login page
-*/
 
-.modal
- {
- margin-left:10%;
- margin-top:5%;
-  display: none;
-  position: fixed;
-  z-index:2;
-  left: 0;
-  top: 0;
-  width: 80%;
-  height: 80%;
-  overflow: auto;
-  background-color:white;
-  padding-top: 40px;
-}
-/*login page design*/
-modal-content
-{
-  background-color: #fefefe;
-  margin: 5% auto 15% auto;
-  border: 1px solid #888;
-  width: 80%;
+
+margin-left:5%;
+margin-right:5%;
+margin-bottom:5%;
 }
 
-/*colour when the cursor is on focus*/
-
-.close:hover,
-.close:focus
-{
-  color: red;
-  cursor: pointer;
-}
-/*cancelbutton to the login page*/
-.cancelbtn
-{
-     width: 6%;
-  }
+div.shopping {
+background-color: light rose;
+display:block;
+position:fixed;
+text-align:center;
+top:0;
+margin-left:70%;
+margin-bottom:0;
+right: 0;
+width: 30%;
+height:100%;
+border: 3px solid black;
 }
