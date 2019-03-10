@@ -6,5 +6,23 @@
 </head>
 <body>
 
+<table border="1" cellpadding="5" cellspacing="5">
+    {% for row in items %}
+        <tr>
+        {% for d in row %}
+            <td>{{ d }}</td>
+        {% endfor %}
+        </tr>
+    {% endfor %}<br>
+
+   <ul style="list-style-type:none;"><li> TOTAL COST:{{item}} </li></ul>
+
+</table>
+<form action="/display_report_page">
+     <div style="margin-right:100%;margin-top:8%">
+  <button class="auto-width"  >Go Back</button>
+     </div>
+
+</form>
 </body>
 </html>
