@@ -6,15 +6,16 @@
 </head>
 <body>
 <h2 style="text-align:center;color:blue ">MENU ITEMS</h2>
-<form action="/beverage_for_hot" >
+<form action="/beverage_for_hot" method="post">
 <div class="hot_beverage">
+     <input type="hidden" name="employeeid" value={{item}}>
 <input type="image" src="../static/assets/images/cafe.jpg"  width="650" height="500" align="left" >
 </div>
 </form>
 
-<form action="/beverage_for_cold" >
+<form action="/beverage_for_cold" method="post">
 <div class="cold_beverage">
-
+    <input type="hidden" name="employeeid" value={{item}}>
     <input type="image" src="../static/assets/images/mixs.jpg" width="650" height="500" align="right">
 </div>
 
