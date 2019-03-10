@@ -1,31 +1,24 @@
-DATABASE NAME           :thoughtworks_cafeteria
+DATABASE NAME                   :thoughtworks_cafeteria
 
-customer_table_name     :employee_details
-                        :create table employee_details (employee_name varchar(30) ,employee_id  integer PRIMARY KEY);
-                        :insert into employee_details values("jayashree",1001);
-login_details_table     :create table customer_details (employee_id  integer);
-
-
-vendor_table_name       :vendor_details
-                        :create table vendor_details (vendor_id varchar(10) PRIMARY KEY,vendor_name varchar(30),vendor_password varchar(30));
-                        :insert into vendor_details values('cb1','oviya',12345);
-
-menu_items              :create table menu_item(ref_id varchar(10) ,item_id SERIAL,item_name varchar ,availabilty
-                         varchar,cost integer,PRIMARY KEY (ref_id,item_id),FOREIGN KEY(ref_id) REFERENCES vendor_details(vendor_id))
-
-for_juice_item          :insert into menu_item(item_id,item_name) values('cb1',Default,'apple'),('cb1',Default,'orange'),('cb1',Default,'guva'),('cb1',Default,'watermelon')
-                          ,('cb1',Default,'green_grapes'),('cb1',Default,'black_grapes'),('cb1'.Default,'papaya');
-
-for_hot_item            :insert into menu_item(ref_id,item_id,item_name) values('hb1',Default,'milk'),('hb1',Default,'coffee'),
-                          ('hb1',Default,'tea'),('hb1',Default,'bonvita');
-
-shopping_cart           :create table shopping_details (employee_id integer,item_id integer,item varchar,quantity integer
-                        ,date DATE DEFAULT CURRENT_DATE ,PRIMARY KEY(employee_id,item_id),
-                         FOREIGN KEY(employee_id) REFERENCES employee_details(employee_id) );
+Table 1:customer_table_name     :employee_details
+                                :create table employee_details (employee_name varchar(30) ,employee_id  integer PRIMARY KEY);
+                                :insert into employee_details values("jayashree",1001);
 
 
 
+Table 2:vendor_table_name       :vendor_details
+                                :create table vendor_details (vendor_id integer PRIMARY KEY,vendor_name varchar(30),vendor_password varchar(30));
+                                :insert into vendor_details values('111','juice',12345);
 
+Table 3:item_menu               :create table items(vendor_id integer reference  vendor_detail(vendor_id),id serial primary key,name varchar ,is_available varchar,cost integer);
+
+
+Table 4:shopping_cart           :create table order_details(employee_id integer references employee_details(employee_id),item_id INTEGER references items(id)
+                                 ,quantity integer,date DATE DEFAULT CURRENT_DATE );
+
+        Report_generation       :select order_detail.employee_id,item.item_id,order_detail.date,sum(order_detail.quantity*item.cost) FROM order_detail inner join item on order_detail.item_id=item.item_id where items.vendor_id=%(vendor_id)s GROUP BY order_detail.employee_id,
+                                 item.item_id,order_detail.date ORDER BY order_details.employee_id;
+                                :select sum(cost*quantity) from items_menu inner join shopping_cart on items_menu.item_id =shopping_cart.item_id;
 
 
 
