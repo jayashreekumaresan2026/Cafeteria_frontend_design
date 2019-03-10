@@ -1,9 +1,9 @@
 /*This specify the style of the body tag*/
 
-body{
+ .images{
 	margin: 0;
 	padding: 0;
-	background-image: linear-gradient(rgba(0, 0, 0, 0.3),rgba(0, 0, 0, 0.3)), url(images_used_in_css/tree.jpg);/*this rgb colors is used for the intensity of the image*/
+	background-image:url("static/assets/images/tree.jpg");/*this rgb colors is used for the intensity of the image*/
 	background-size: cover;
 	font-family: sans-serif;
   background-attachment:fixed;
@@ -80,12 +80,18 @@ h1{
 	color: white;
 
 }
-<!--This anchor tag is used to go previous page-->
-<a href="second_page_menu.html" class="previous">&laquo; Previous</a>
- <!--The image used in the button to go back to the hot page -->
-<div class="b">Your Order:</div>
+button1{
+background:green;
+}
 
-<form action="list_of_hot.html">
-  <input type="image" src="Image_folder\co.jpg" alt="Submit" width="50" height="50">
-    <h3>HOT</h3>
-</form>
+
+.cancelbtn{
+margin-top:40%;
+margin-left:40%;
+
+}
+
+
+
+
+
